@@ -24,7 +24,7 @@ def main():
 	
 	print("Drawing Planets...")
 	print("New Planet # : ", playingField.get('numbPlanets'))
-	planet_sample = random.sample(PLANETS, k=playingField.get('numbPlanets'))
+	planet_sample = random.choices(PLANETS, k=playingField.get('numbPlanets'))
 	for i in field:
 		print(planet_sample[i])
 	
