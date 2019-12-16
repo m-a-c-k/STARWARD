@@ -9,16 +9,27 @@ import random
 #dict field = {numberPlanets}
 
 def main():
+#setup -----------------------------------------------------------------
 	PLANETS = [
 	 {'position' : 1, 'name' : 'bluePlanet',   'risk': '1'},
 	 {'position' : 2, 'name' : 'greenPlanet',  'risk': '2'},
 	 {'position' : 3, 'name' : 'yellowPlanet', 'risk': '3'},
 	 {'position' : 4, 'name' : 'orangePlanet', 'risk': '4'},
 	 {'position' : 5, 'name' : 'redPlanet',    'risk': '5'} ]
+	 
+	PLAYERS = [
+	 {'player':1, 'ships' : 2, 'power' : 2, 'risk': '1'},
+	 {'player':2, 'ships' : 2, 'power' : 2, 'risk': '2'},
+	 {'player':3, 'ships' : 2, 'power' : 2, 'risk': '3'},
+	 {'player':4, 'ships' : 2, 'power' : 2, 'risk': '4'} ]
 
 	playingField = {'numbPlanets' : 0,} 
 
+#Build Phase -----------------------------------------------------------
 	
+
+
+#Discovery Phase -------------------------------------------------------	
 	playingField['numbPlanets'] = Planet_Draw()
 	field = range(playingField['numbPlanets'])
 	
@@ -28,14 +39,21 @@ def main():
 	for i in field:
 		print(planet_sample[i])
 	
+#Launch Phase ----------------------------------------------------------
+	explore = input("Would you like to explore an available planet? y/n ")
 	
-	roll = input("roll dice? y/n : ")
+	
+	roll = input("roll dice? y/n ")
 	if(roll == 'y'):
 		print("You rolled a : ", roll_dice_6s())
 	else: 
 		print("roll declined")
 		exit
-	
+
+#Conflict Phase --------------------------------------------------------
+
+
+#Encounter Phae --------------------------------------------------------
 	
 	
 def roll_dice_6s():
@@ -45,6 +63,9 @@ def roll_dice_6s():
 def Planet_Draw():
 	numbPlanets = randint(1,9)
 	return numbPlanets
+	
+def Planet_Explore():
+	pass
 
 
 if __name__ == "__main__":
