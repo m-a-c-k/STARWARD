@@ -1,5 +1,62 @@
 # STARWARD
 Emulation of board game by Michael Cozzi
 
+# How To Play
+# Step 1: Deal to players
+# - Deal Ships
+# - Deal Power
+# - Deal Aliens
+
+# Alien cards are played throughout the game rounds.
+# Some can only be played at certain phases
+# All cards have a cost associated with them to pay
+
+# Step 2: Players Select Alien to Keep
+# Aliens can't be drawn more than once
+
+# Step 3: Randomly assign first player
+
+# Step 4: Start Rounds
+
+# Phase 1: Build Phase
+# Each player has the option to purchase ships or Aliens
+#	Ship Cost = 2
+#	Alien Cost = 2
+
+# Phase 2: Discovery Phase
+# Roll a dice to randomly draw planets
+#	If 2-4 Players, roll one dice
+#	If 5-8 Players, roll two dice
+
+# Phase 3: Launch Phase
+# First player chooses a planet to send one ship or passes.
+#	If they pass, they cannot send another ship that round
+#	Move on to player in the next position.
+#	Restart at first player until all players have placed or passed
+
+# Phase 4: Conflict Phase
+# If a planet is occupied by more than one player, it will require a resolution.
+#	First player in ascending order chooses which struggle to resolve.
+#	All players in the struggle choose how much power to bet on the planet
+#	If a player bets more than the others, that player stays on the planet and loses the power they bet. Other players keep their power, but those ships are sent back to hyperspace.
+#	If players bet the highest, and equal amounts, they enter into a dice dual.
+#	Players dice based on the number of ships that they have on the planet.
+#	If there is a tie, the players re-roll.
+#	The player with the highest single die wins. But loses their power. Other players keep their power, but those ships are sent back to hyperspace.
+
+
+# Phase 5: Encounter Phase
+# 	Players roll one dice corresponding to the planets their ships are on
+#	Ships are destroyed, aliens cards are drawn, or power is taken
+#
+#	***Give 1 Sympathy Power to player that has 0 ships and 0 power
+#   after completing a round having 0 ships and 0 power*** <==Move this to last step
+
+# Phase 6: Check for Winner
+# If a player has 10 or more points, and other players do not have equal or more, that player wins
+# Move first player assignment to the player in the next position. 
+
+
+
 
 Ignore GUI file, for now.
