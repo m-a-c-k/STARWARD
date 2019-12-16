@@ -1,52 +1,29 @@
-from tkinter import *
+import PySimpleGUI as sg
 
 
-# Here, we are creating our class, Window, and inheriting from the Frame
-# class. Frame is a class from the tkinter module. (see Lib/tkinter/__init__)
-class Window(Frame):
+PLAYERS = [
+	 {'player':1, 'ships' : 2, 'power' : 2, 'risk': '1'},
+	 {'player':2, 'ships' : 2, 'power' : 2, 'risk': '2'},
+	 {'player':3, 'ships' : 2, 'power' : 2, 'risk': '3'},
+	 {'player':4, 'ships' : 2, 'power' : 2, 'risk': '4'} ]
 
-    # Define settings upon initialization. Here you can specify
-    def __init__(self, master=None):
-        
-        # parameters that you want to send through the Frame class. 
-        Frame.__init__(self, master)   
+sg.change_look_and_feel('DarkBlue13')    # Add a touch of color
+# All the stuff inside your window.
+layout = [  [sg.Text('Enter something on Row 2'), sg.InputText()],
+            [sg.Submit(), sg.Cancel('Finished')] ,
+            [sg.Text(PLAYERS[0])],
+            [sg.Text(PLAYERS[1])], 
+            [sg.Text(PLAYERS[2])],
+            [sg.Text(PLAYERS[3])],
+        ]
 
-        #reference to the master widget, which is the tk window                 
-        self.master = master
+# Create the Window
+window = sg.Window('Stardward', layout)
+# Event Loop to process "events" and get the "values" of the inputs
+while True:
+    event, values = window.read()
+    if event in (None, 'Finished'):   # if user closes window or clicks cancel
+        break
+    print('You entered ', values[0])
 
-        #with that, we want to then run init_window, which doesn't yet exist
-        self.init_window()
-
-    #Creation of init_window
-    def init_window(self):
-
-        # changing the title of our master widget      
-        self.master.title("STARWARD")
-
-        # allowing the widget to take the full space of the root window
-        self.pack(fill=BOTH, expand=1)
-
-        # creating a button instance
-        quitButton = Button(self, text="Exit",command=self.client_exit)
-        
-        proceedBttn = Button(self, text="Continue", command=self.client_exit)
-
-        # placing the button on my window
-        quitButton.place(x=0, y=0)
-
-       
-
-    def client_exit(self):
-        exit()
-
-# root window created. Here, that would be the only window, but
-# you can later have windows within windows.
-root = Tk()
-
-root.geometry("400x300")
-
-#creation of an instance
-app = Window(root)
-
-#mainloop 
-root.mainloop()  
+window.close()
