@@ -1,6 +1,9 @@
 # generate random integer values
 from random import randint
 import random
+import PySimpleGUI as sg
+sg.change_look_and_feel('DarkBlue13')  
+
 # generate some integers
 #for _ in range(10):
 #       value = randint(1, 12)
@@ -23,29 +26,47 @@ def main():
 	 {'player':3, 'ships' : 2, 'power' : 2, 'risk': '3'},
 	 {'player':4, 'ships' : 2, 'power' : 2, 'risk': '4'} ]
 
-	playingField = {'numbPlanets' : 0,} 
+	playingFieldSize = 0
 
 #Build Phase -----------------------------------------------------------
 	
 
 
 #Discovery Phase -------------------------------------------------------	
-	playingField['numbPlanets'] = Planet_Draw()
-	field = range(playingField['numbPlanets'])
+	playingFieldSize = Planet_Draw()
+	field = range(playingFieldSize)
 	
 	print("Drawing Planets...")
-	print("New Planet # : ", playingField.get('numbPlanets'))
-	planet_sample = random.choices(PLANETS, k=playingField.get('numbPlanets'))
+	print("New Planet # : ", playingFieldSize)
+	planet_sample = random.choices(PLANETS, k=playingFieldSize)
 	for i in field:
 		print(planet_sample[i])
 	
 #Launch Phase ----------------------------------------------------------
 	explore = input("Would you like to explore an available planet? y/n ")
-	
-	
+	if (explore == "y"):
+		planetChoice1 = input("Which planets will you explore first? \n(blue, green, yellow, orange or red : ")
+		if (planetChoice1 == "blue"):
+			sg.popup("Navigating to Blue Planet")
+			print("Navigating to Blue Planet")
+		if (planetChoice1 == "green"):
+			print("Navigating to Green Planet")
+			sg.popup("Navigating to Green Planet")
+		if (planetChoice1 == "yellow"):
+			print("Navigating to Yellow Planet")
+			sg.popup("Navigating to Yellow Planet")
+		if (planetChoice1 == "orange"):
+			print("Navigating to Orange Planet")
+			sg.popup("Navigating to Orange Planet")
+		if (planetChoice1 == "red"):
+			print("Navigating to Red Planet")
+			sg.popup("Navigating to Red Planet")
+
 	roll = input("roll dice? y/n ")
 	if(roll == 'y'):
-		print("You rolled a : ", roll_dice_6s())
+		roll_result = roll_dice_6s()
+		print("You rolled a : ", roll_result)
+		sg.popup("You rolled a : ", roll_result)
 	else: 
 		print("roll declined")
 		exit
