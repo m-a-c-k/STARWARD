@@ -22,6 +22,7 @@ def main():
 	 {'player':4, 'ships' : 2, 'power' : 2, 'risk': '4'} ]
 
 	playingFieldSize = 0
+	
 
 #Build Phase -----------------------------------------------------------
 	
@@ -83,8 +84,19 @@ def Planet_Draw():
 def Planet_Explore():
 	pass
 
+def easygrid():
+    list = [[1,2,3,4,5],
+            [6,7,8,9,10],
+            [11,12,13,14,15],
+            [16,17,18,19,20],
+            [21,22,23,24,25]
+            ]
+    for i in list:
+        print(i)
+
 
 if __name__ == "__main__":
+	easygrid()
 	main()
 
 
