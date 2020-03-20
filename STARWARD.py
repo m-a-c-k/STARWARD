@@ -1,6 +1,6 @@
 # generate random integer values
 from random import randint
-import pygame 
+#import pygame 
 import sys, random
 import numpy as np
 
