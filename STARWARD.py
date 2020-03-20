@@ -9,11 +9,11 @@ import random
 def main():
 #setup -----------------------------------------------------------------
 	PLANETS = [
-	 {'position' : 1, 'name' : 'bluePlanet',   'risk': '1'},
-	 {'position' : 2, 'name' : 'greenPlanet',  'risk': '2'},
-	 {'position' : 3, 'name' : 'yellowPlanet', 'risk': '3'},
-	 {'position' : 4, 'name' : 'orangePlanet', 'risk': '4'},
-	 {'position' : 5, 'name' : 'redPlanet',    'risk': '5'} ]
+	 {'position' : 1, 'name' : 'bluePlanet',   'risk': 1},
+	 {'position' : 2, 'name' : 'greenPlanet',  'risk': 2},
+	 {'position' : 3, 'name' : 'yellowPlanet', 'risk': 3},
+	 {'position' : 4, 'name' : 'orangePlanet', 'risk': 4},
+	 {'position' : 5, 'name' : 'redPlanet',    'risk': 5} ]
 	 
 	PLAYERS = [
 	 {'player':1, 'ships' : 2, 'power' : 2, 'risk': '1'},
@@ -41,28 +41,45 @@ def main():
 #Launch Phase ----------------------------------------------------------
 	explore = input("Would you like to explore an available planet? y/n ")
 	if (explore == "y"):
-		planetChoice1 = input("Which planets will you explore first? \n(blue, green, yellow, orange or red : ")
+		planetChoice1 = input("Which planets will you explore first? \n(blue, green, yellow, orange or red) : ")
 		if (planetChoice1 == "blue"):
 			#sg.popup("Navigating to Blue Planet")
 			print("Navigating to Blue Planet")
+			print("\nrisk = ",PLANETS[1]['risk'])
+			chosen_planet = PLANETS[1]
+			
 		if (planetChoice1 == "green"):
 			print("Navigating to Green Planet")
+			print("\nrisk = ",PLANETS[2]['risk'])
 			#sg.popup("Navigating to Green Planet")
+			chosen_planet = PLANETS[2]
+			
 		if (planetChoice1 == "yellow"):
 			print("Navigating to Yellow Planet")
+			print("\nrisk = ",PLANETS[3]['risk'])
 			#sg.popup("Navigating to Yellow Planet")
+			chosen_planet = PLANETS[3]
+			
 		if (planetChoice1 == "orange"):
 			print("Navigating to Orange Planet")
+			print("\nrisk = ",PLANETS[4]['risk'])
 			#sg.popup("Navigating to Orange Planet")
+			chosen_planet = PLANETS[4]
+			
 		if (planetChoice1 == "red"):
 			print("Navigating to Red Planet")
+			print("\nrisk = ",PLANETS[5]['risk'])
 			#sg.popup("Navigating to Red Planet")
-
+			chosen_planet = PLANETS[5]
+	
+	print("\nChosen Planet : {}\n".format(chosen_planet))
+	
 	roll = input("roll dice? y/n ")
 	if(roll == 'y'):
 		roll_result = roll_dice_6s()
 		print("You rolled a : ", roll_result)
 		#sg.popup("You rolled a : ", roll_result)
+		
 	else:
 		print("roll declined")
 		exit
@@ -74,7 +91,7 @@ def main():
 	
 	
 def roll_dice_6s():
-	roll_result = randint(1,12)
+	roll_result = randint(2,12)
 	return roll_result
 	
 def Planet_Draw():
