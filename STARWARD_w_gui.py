@@ -5,13 +5,30 @@ import sys, random, pygame
 import numpy as np
 from pygame.locals import *
 
-
+white = (255, 255, 255) 
+green = (0, 255, 0) 
+blue = (0, 0, 128)
+X = 400
+Y = 300
+j=1
 
 def main():
 	pygame.init()
-	DISPLAYSURF = pygame.display.set_mode((400, 300))
-	pygame.display.set_caption('-----STARWARD-----')
+	DISPLAYSURF = pygame.display.set_mode((X, Y))
+	pygame.display.set_caption('----- STARWARD -----')
+	font = pygame.font.Font('freesansbold.ttf', 32)
+	
+	
+
 #setup -----------------------------------------------------------------
+	player_count = int(input("How many players? : "))
+	text = font.render(str(player_count), True, green, blue)
+	textRect = text.get_rect()
+	DISPLAYSURF.blit(text, textRect)	
+	# set the center of the rectangular object.
+	textRect.center = (X // 2, Y // 2)  
+  	
+	
 	PLANETS = [
 	 {'position' : 1, 'name' : 'bluePlanet',   'risk': 1},
 	 {'position' : 2, 'name' : 'greenPlanet',  'risk': 2},
@@ -27,6 +44,9 @@ def main():
 
 	playingFieldSize = 0
 	
+	playingFieldSize = Planet_Draw()
+	field = range(playingFieldSize)
+	
 
 #Build Phase -----------------------------------------------------------
 	
@@ -34,68 +54,67 @@ def main():
 
 #Discovery Phase -------------------------------------------------------
 	while (True):	
-	
-		playingFieldSize = Planet_Draw()
-		field = range(playingFieldSize)
-
-		for event in pygame.event.get():
-			if event.type == QUIT:
-				pygame.quit()
-				sys.exit()
-		pygame.display.update()
+		for j in range(player_count):
+			print("\nPlayer # : ", j)
+			for event in pygame.event.get():
+				if event.type == QUIT:
+					pygame.quit()
+					sys.exit()
+			pygame.display.update()
 		
-		print("Drawing Planets...")
-		print("New Planet # : ", playingFieldSize)
-		planet_sample = random.choices(PLANETS, k=playingFieldSize)
-		for i in field:
-			print(planet_sample[i])
+			print("Drawing Planets...")
+			print("New Planet # : ", playingFieldSize)
+			planet_sample = random.choices(PLANETS, k=playingFieldSize)
+			for i in field:
+				print(planet_sample[i])
 		
 #Launch Phase ----------------------------------------------------------
-		explore = input("Would you like to explore an available planet? y/n ")
-		if (explore == "y"):
-			planetChoice1 = input("Which planets will you explore first? \n(blue, green, yellow, orange or red) : ")
-			if (planetChoice1 == "blue"):
-				print("Navigating to Blue Planet")
-				print("\nrisk = ",PLANETS[0]['risk'])
-				chosen_planet = PLANETS[0]
-				
-			if (planetChoice1 == "green"):
-				print("Navigating to Green Planet")
-				print("\nrisk = ",PLANETS[1]['risk'])
-				chosen_planet = PLANETS[1]
-				
-			if (planetChoice1 == "yellow"):
-				print("Navigating to Yellow Planet")
-				print("\nrisk = ",PLANETS[2]['risk'])
-				chosen_planet = PLANETS[2]
-				
-			if (planetChoice1 == "orange"):
-				print("Navigating to Orange Planet")
-				print("\nrisk = ",PLANETS[3]['risk'])
-				chosen_planet = PLANETS[3]
-				
-			if (planetChoice1 == "red"):
-				print("Navigating to Red Planet")
-				print("\nrisk = ",PLANETS[4]['risk'])
-				chosen_planet = PLANETS[4]
+			explore = input("Would you like to explore an available planet? y/n ")
+			if (explore == "y"):
+				planetChoice1 = input("Which planets will you explore first? \n(blue, green, yellow, orange or red) : ")
+				if (planetChoice1 == "blue"):
+					print("Navigating to Blue Planet")
+					print("\nrisk = ",PLANETS[0]['risk'])
+					chosen_planet = PLANETS[0]
+					
+				if (planetChoice1 == "green"):
+					print("Navigating to Green Planet")
+					print("\nrisk = ",PLANETS[1]['risk'])
+					chosen_planet = PLANETS[1]
+					
+				if (planetChoice1 == "yellow"):
+					print("Navigating to Yellow Planet")
+					print("\nrisk = ",PLANETS[2]['risk'])
+					chosen_planet = PLANETS[2]
+					
+				if (planetChoice1 == "orange"):
+					print("Navigating to Orange Planet")
+					print("\nrisk = ",PLANETS[3]['risk'])
+					chosen_planet = PLANETS[3]
+					
+				if (planetChoice1 == "red"):
+					print("Navigating to Red Planet")
+					print("\nrisk = ",PLANETS[4]['risk'])
+					chosen_planet = PLANETS[4]
 	
-		print("\nChosen Planet : {}\n".format(chosen_planet))
-	
-		roll = input("roll dice? y/n ")
-		if(roll == 'y'):
-			roll_result = roll_dice_6s()
-			print("You rolled a : ", roll_result)
-		else:
-			print("roll declined")
-			exit
-	
-		Planet_Explore (roll_result, chosen_planet)
+			print("\nChosen Planet : {}\n".format(chosen_planet))
 		
-		print("-------------------------------------------")
-		print("\n\twhile loop completed\n")
-		print("-------------------------------------------\n")
-		#pygame.quit()
-		#sys.exit()
+			roll = input("roll dice? y/n ")
+			if(roll == 'y'):
+				roll_result = roll_dice_6s()
+				print("You rolled a : ", roll_result)
+			else:
+				print("roll declined")
+				exit
+		
+			Planet_Explore (roll_result, chosen_planet)
+			
+			print("-------------------------------------------")
+			print("\n\twhile loop completed\n")
+			print("-------------------------------------------\n")
+			#pygame.quit()
+			#sys.exit()
+			print("Player # : ", j)
 	
 
 #Conflict Phase --------------------------------------------------------
