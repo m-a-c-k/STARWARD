@@ -22,6 +22,13 @@ def main():
 	 {'player':4, 'ships' : 2, 'power' : 2, 'planets_occupied': 0} ]
 
 	playingFieldSize = 0
+
+	print("How many players? : ")
+	player_count = input()
+	print("player count: ", player_count)
+	
+	playingFieldSize = Planet_Draw()
+	field = range(playingFieldSize)
 	
 
 #Build Phase -----------------------------------------------------------
@@ -30,9 +37,7 @@ def main():
 
 #Discovery Phase -------------------------------------------------------
 	while (True):	
-		playingFieldSize = Planet_Draw()
-		field = range(playingFieldSize)
-	
+			
 		print("Drawing Planets...")
 		print("New Planet # : ", playingFieldSize)
 		planet_sample = random.choices(PLANETS, k=playingFieldSize)
@@ -84,6 +89,8 @@ def main():
 		print("\n\twhile loop completed\n")
 		print("-------------------------------------------\n")
 	
+		pygame.quit()
+        sys.exit()
 
 #Conflict Phase --------------------------------------------------------
 
@@ -92,7 +99,7 @@ def main():
 	
 	
 def roll_dice_6s():
-	roll_result = randint(1,9)
+	roll_result = randint(1,6)
 	return roll_result
 	
 def Planet_Draw():
@@ -113,6 +120,7 @@ def easygrid():
     print("\n",grid)
 
 if __name__ == "__main__":
+	
 	easygrid()
 	main()
 
